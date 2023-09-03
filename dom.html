@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dom project</title>
+    <style>
+      .js-subcribe-button{
+        border: none;
+        background-color: black;
+        color: white;
+        padding: 10px 15px 10px 15px;
+        border-radius: 50px;
+        font-weight: bold;
+        cursor: pointer;
+
+      }
+      .js-subcribed-button{
+        background-color: Gray;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button  class="js-subcribe-button"  onclick="
+    Subscribe();
+    ">
+    Subscribe
+  </button>
+  <p>Amazon Shipping Calculator</p>
+  <input  class="input-value" placeholder="Cost of holder" 
+  onkeydown="
+    handlecost(event);
+  " 
+  >
+  <button class="js-cal" 
+  onclick="
+    Calculate();
+  " >Calculate</button>
+  <p class="js-total-cost"></p>
+    <script>
+      function handlecost(event){
+        console.log(event.key);
+      if(event.key === 'Enter'){
+      Calculate();
+   }
+      }
+      function Calculate(){
+       const inputval= document.querySelector('.input-value');
+       let cost = Number(inputval.value);
+       if(cost<40){
+        cost +=10;
+      }
+      document.querySelector('.js-total-cost').innerHTML=`$${cost}`;
+      }
+      function Subscribe(){
+    const buttonElement = document.querySelector('.js-subcribe-button');
+    if(buttonElement.innerText==='Subscribe'){
+      buttonElement.innerHTML='Subscribed';
+      buttonElement.classList.add('js-subcribed-button');
+    }else{
+      buttonElement.innerHTML='Subscribe';
+      buttonElement.classList.remove('js-subcribed-button');
+    }
+      }
+    </script>
+  </body>
+</html>
